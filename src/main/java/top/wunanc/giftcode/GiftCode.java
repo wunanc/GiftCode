@@ -1,4 +1,4 @@
-package top.wunanc.giftCode;
+package top.wunanc.giftcode;
 
 import org.bukkit.plugin.java.JavaPlugin;
 

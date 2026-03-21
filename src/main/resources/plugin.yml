@@ -1,6 +1,6 @@
 name: GiftCode
 version: '1.0.0'
-main: top.wunanc.giftCode.GiftCode
+main: top.wunanc.giftcode.GiftCode
 api-version: '1.20'
 authors: [ Wunanc ]
 description: Add redeem code functionality to your server, with Folia support!
