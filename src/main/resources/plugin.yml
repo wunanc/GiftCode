@@ -6,3 +6,8 @@ authors: [ Wunanc ]
 description: Add redeem code functionality to your server, with Folia support!
 website: https://mc.wunanc.top
 folia-supported: true
+
+commands:
+  gc:
+    description: 兑换码主命令
+    usage: /gc <uuid>
