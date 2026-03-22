@@ -1,7 +1,7 @@
 package top.wunanc.giftcode;
 
 import org.bukkit.plugin.java.JavaPlugin;
-import top.wunanc.giftcode.command.GiftCodeCommand;
+import top.wunanc.giftcode.command.MainCommand;
 import top.wunanc.giftcode.database.DatabaseManager;
 
 import java.sql.SQLException;
@@ -11,7 +11,6 @@ public final class GiftCode extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        // Plugin startup logic
         getLogger().info("正在初始化数据库...");
         databaseManager = new DatabaseManager(getDataFolder());
         try {
@@ -22,17 +21,16 @@ public final class GiftCode extends JavaPlugin {
             e.printStackTrace();
         }
 
-        // 注册指令
-        GiftCodeCommand commandHandler = new GiftCodeCommand(this, databaseManager);
-        getCommand("gc").setExecutor(commandHandler);
-        getCommand("gc").setTabCompleter(commandHandler);
+        // 注册全新的主命令路由
+        MainCommand mainCommand = new MainCommand(this, databaseManager);
+        getCommand("gc").setExecutor(mainCommand);
+        getCommand("gc").setTabCompleter(mainCommand);
 
-        getLogger().info("GiftCode 插件已启用！(Folia 兼容支持)");
+        getLogger().info("GiftCode 插件已启用！(支持 Folia 与分页列表)");
     }
 
     @Override
     public void onDisable() {
-        // Plugin shutdown logic
         if (databaseManager != null) {
             databaseManager.close();
             getLogger().info("数据库连接已关闭。");
