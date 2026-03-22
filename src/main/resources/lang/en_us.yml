@@ -1,0 +1,45 @@
+# English Language Pack - MiniMessage syntax supported
+prefix: "<gray>[</gray><gold>GiftCode</gold><gray>]</gray> "
+
+# Basic Messages
+no_permission: "<red>You do not have permission to execute this command!</red>"
+only_player: "<red>Only players can use gift codes!</red>"
+usage_main: "<red>Usage: /gc <code> or /gc <create|list|clear> ...</red>"
+db_error: "<red>Database error: %error%</red>"
+
+# Create Command
+usage_create: "<red>Usage: /gc create <cmd|item> <uses> <expire_secs,-1_for_permanent> <content...></red>"
+param_error_number: "<red>Parameter error: <uses> and <expire> must be numbers!</red>"
+param_error_item: "<red>Invalid item ID: %item%</red>"
+param_error_type: "<red>Type must be 'cmd' or 'item'!</red>"
+create_success: "<green>Successfully created gift code!</green><newline><green>UUID: </green><click:copy_to_clipboard:'%uuid%'><hover:show_text:'<green>Click to copy UUID!</green>'><yellow><u>%uuid%</u></yellow></hover></click><newline><green>Type: </green><white>%type%</white> <green>Content: </green><white>%content%</white>"
+
+# Claim Command
+verifying: "<yellow>Verifying code, please wait...</yellow>"
+code_not_exist: "<red>The code does not exist!</red>"
+code_expired: "<red>The code has expired!</red>"
+code_depleted: "<red>The code has been fully depleted!</red>"
+claim_fail_fast: "<red>Claim failed. You were too slow, it might be depleted or expired!</red>"
+claim_success_item: "<green>Successfully claimed! You received items.</green>"
+claim_success_cmd: "<green>Successfully claimed! Reward has been granted.</green>"
+
+# List Command
+querying: "<yellow>Querying database, please wait...</yellow>"
+list_header: "<dark_gray>================ </dark_gray><gold>Code List (%page%/%total%) </gold><dark_gray>================</dark_gray>"
+list_empty: "<gray>There are no gift code records.</gray>"
+list_format: "<click:copy_to_clipboard:'%uuid%'><hover:show_text:'<green>Click to copy UUID</green>'><yellow>[Copy]</yellow></hover></click> <white>Type:</white> <gold>%type%</gold> <white>Content:</white> <green>%content%</green> <white>Left:</white> <aqua>%left%</aqua> <white>Expire:</white> <red>%expire%</red>"
+list_footer: "<dark_gray>==================================================</dark_gray>"
+list_next_page: "<gray>Type </gray><click:run_command:'/gc list %next%'><hover:show_text:'<green>Click to view next page</green>'><yellow><u>/gc list %next%</u></yellow></hover></click><gray> to view the next page</gray>"
+
+# Clear Command
+clear_start: "<yellow>Cleaning up expired and depleted codes in the database...</yellow>"
+clear_success: "<green>Cleanup complete! <yellow>%count%</yellow> invalid codes have been deleted!</green>"
+
+# Reload Command
+reload_success: "<green>Plugin config and language files have been reloaded successfully!</green>"
+
+tab_create_uses: "<Amount/Uses>"
+tab_create_expire: "<ExpireSeconds,-1=Permanent>"
+tab_create_cmd: "<Command_To_Run(Supports_%player%)>"
+tab_create_item_amount: "<Item_Amount>"
+tab_list_page: "<Page_Number>"

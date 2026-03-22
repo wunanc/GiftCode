@@ -1,0 +1,45 @@
+# 中文语言包 - 支持 MiniMessage 富文本语法
+prefix: "<gray>[</gray><gold>GiftCode</gold><gray>]</gray> "
+
+# 基础提示
+no_permission: "<red>你没有权限执行此命令！</red>"
+only_player: "<red>只有玩家可以使用兑换码！</red>"
+usage_main: "<red>用法: /gc <兑换码> 或 /gc <create|list|clear> ...</red>"
+db_error: "<red>数据库发生错误: %error%</red>"
+
+# 创建命令提示
+usage_create: "<red>用法: /gc create <cmd|item> <次数> <过期时间秒,-1为永久> <具体内容...></red>"
+param_error_number: "<red>参数错误：<次数> 和 <过期时间> 必须是纯数字！</red>"
+param_error_item: "<red>无效的物品ID: %item%</red>"
+param_error_type: "<red>类型只能是 cmd 或 item！</red>"
+create_success: "<green>成功创建兑换码！</green><newline><green>UUID: </green><click:copy_to_clipboard:'%uuid%'><hover:show_text:'<green>点击此处复制 UUID！</green>'><yellow><u>%uuid%</u></yellow></hover></click><newline><green>类型: </green><white>%type%</white> <green>内容: </green><white>%content%</white>"
+
+# 兑换命令提示
+verifying: "<yellow>正在验证兑换码，请稍候...</yellow>"
+code_not_exist: "<red>该兑换码不存在！</red>"
+code_expired: "<red>该兑换码已过期！</red>"
+code_depleted: "<red>该兑换码已被领完！</red>"
+claim_fail_fast: "<red>兑换失败，手慢了，兑换码可能刚被抢完或过期！</red>"
+claim_success_item: "<green>兑换成功！获得了物品！</green>"
+claim_success_cmd: "<green>兑换成功！奖励已发放！</green>"
+
+# 列表命令提示
+querying: "<yellow>正在查询数据，请稍候...</yellow>"
+list_header: "<dark_gray>================ </dark_gray><gold>兑换码列表 (%page%/%total%) </gold><dark_gray>================</dark_gray>"
+list_empty: "<gray>当前没有任何兑换码记录。</gray>"
+list_format: "<click:copy_to_clipboard:'%uuid%'><hover:show_text:'<green>点击复制 UUID</green>'><yellow>[复制]</yellow></hover></click> <white>类型:</white> <gold>%type%</gold> <white>内容:</white> <green>%content%</green> <white>剩余:</white> <aqua>%left%</aqua> <white>过期:</white> <red>%expire%</red>"
+list_footer: "<dark_gray>==================================================</dark_gray>"
+list_next_page: "<gray>输入 </gray><click:run_command:'/gc list %next%'><hover:show_text:'<green>点击前往下一页</green>'><yellow><u>/gc list %next%</u></yellow></hover></click><gray> 查看下一页</gray>"
+
+# 清理命令提示
+clear_start: "<yellow>正在清理数据库中过期和已用完的兑换码...</yellow>"
+clear_success: "<green>清理完成！共删除了 <yellow>%count%</yellow> 条失效兑换码！</green>"
+
+# 重载命令提示
+reload_success: "<green>插件配置和语言文件已成功重载！</green>"
+
+tab_create_uses: "<数量/次数>"
+tab_create_expire: "<过期时间秒,-1永久>"
+tab_create_cmd: "<输入要执行的命令(支持%player%)>"
+tab_create_item_amount: "<物品数量>"
+tab_list_page: "<页码>"

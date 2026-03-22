@@ -1,11 +1,10 @@
 package top.wunanc.giftcode.command.sub;
 
-import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.command.CommandSender;
 import top.wunanc.giftcode.GiftCode;
 import top.wunanc.giftcode.command.SubCommand;
 import top.wunanc.giftcode.database.DatabaseManager;
+import top.wunanc.giftcode.manager.LanguageManager;
 import top.wunanc.giftcode.model.CodeData;
 import top.wunanc.giftcode.util.SchedulerUtil;
 
@@ -15,14 +14,19 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * 分页展示当前数据库中兑换码的子命令。
+ */
 public class ListCommand implements SubCommand {
     private final GiftCode plugin;
     private final DatabaseManager db;
+    private final LanguageManager lang;
     private final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 
-    public ListCommand(GiftCode plugin, DatabaseManager db) {
+    public ListCommand(GiftCode plugin, DatabaseManager db, LanguageManager lang) {
         this.plugin = plugin;
         this.db = db;
+        this.lang = lang;
     }
 
     @Override
@@ -33,9 +37,11 @@ public class ListCommand implements SubCommand {
         }
         final int finalTargetPage = targetPage;
 
-        sender.sendMessage("§e正在查询数据，请稍候...");
+        lang.send(sender, "querying");
+
         SchedulerUtil.runAsync(plugin, () -> {
             try {
+                // 计算总条数和分页信息
                 int total = db.getTotalCodesCount();
                 int totalPages = (int) Math.ceil(total / 10.0);
                 if (totalPages == 0) totalPages = 1;
@@ -43,36 +49,36 @@ public class ListCommand implements SubCommand {
                 int page = Math.max(1, Math.min(finalTargetPage, totalPages));
                 int offset = (page - 1) * 10;
 
+                // 从数据库取当前页的数据（LIMIT 10）
                 List<CodeData> codes = db.getCodes(10, offset);
 
-                sender.sendMessage("§8================ §6兑换码列表 (§e" + page + "§6/§e" + totalPages + "§6) §8================");
+                lang.send(sender, "list_header", "page", String.valueOf(page), "total", String.valueOf(totalPages));
+
                 if (codes.isEmpty()) {
-                    sender.sendMessage("§7当前没有任何兑换码记录。");
+                    lang.send(sender, "list_empty");
                 } else {
                     for (CodeData code : codes) {
-                        String expireStr = code.getExpireTime() == -1 ? "永久" : sdf.format(new Date(code.getExpireTime()));
+                        String expireStr = code.getExpireTime() == -1 ? "∞" : sdf.format(new Date(code.getExpireTime()));
 
-                        // MiniMessage: 富文本，包含点击复制UUID的悬浮字
-                        String mm = "<click:copy_to_clipboard:'" + code.getUuid() + "'>" +
-                                "<hover:show_text:'<green>点击复制 UUID</green>'><yellow>[复制]</yellow></hover></click> " +
-                                "<white>类型:</white> <gold>" + code.getType() + "</gold> " +
-                                "<white>内容:</white> <green>" + code.getContent() + "</green> " +
-                                "<white>剩余:</white> <aqua>" + code.getRemaining() + "</aqua> " +
-                                "<white>过期:</white> <red>" + expireStr + "</red>";
-
-                        sender.sendMessage(MiniMessage.miniMessage().deserialize(mm));
+                        // 输出格式化后的每一条数据记录
+                        lang.send(sender, "list_format",
+                                "uuid", code.getUuid(),
+                                "type", code.getType(),
+                                "content", code.getContent(),
+                                "left", String.valueOf(code.getRemaining()),
+                                "expire", expireStr);
                     }
                 }
-                sender.sendMessage("§8==================================================");
+
+                lang.send(sender, "list_footer");
+
+                // 提示可点击的下一页
                 if (page < totalPages) {
-                    sender.sendMessage(MiniMessage.miniMessage().deserialize(
-                            "<gray>输入 </gray><click:run_command:'/gc list " + (page + 1) + "'>" +
-                                    "<hover:show_text:'<green>点击前往下一页</green>'><yellow><u>/gc list " + (page + 1) + "</u></yellow></hover></click><gray> 查看下一页</gray>"));
+                    lang.send(sender, "list_next_page", "next", String.valueOf(page + 1));
                 }
 
             } catch (SQLException e) {
-                sender.sendMessage("§c数据库查询失败！");
-                e.printStackTrace();
+                lang.send(sender, "db_error", "error", e.getMessage());
             }
         });
     }
@@ -80,7 +86,9 @@ public class ListCommand implements SubCommand {
     @Override
     public List<String> tabComplete(CommandSender sender, String[] args) {
         List<String> list = new ArrayList<>();
-        if (args.length == 2) list.add(args[1].isEmpty() ? "<页码>" : args[1]);
+        if (args.length == 2) {
+            list.add(args[1].isEmpty() ? lang.getRaw("tab_list_page") : args[1]);
+        }
         return list;
     }
 

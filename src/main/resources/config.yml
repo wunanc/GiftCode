@@ -1,0 +1,8 @@
+# ==========================================
+#        GiftCode Plugin Configuration
+# ==========================================
+
+# 插件使用的语言文件 (不需要加 .yml 后缀)
+# Plugin language file (without .yml extension)
+# 可选/Available: zh_cn, en_us
+language: 'zh_cn'
