@@ -43,3 +43,6 @@ tab_create_expire: "<过期时间秒,-1永久>"
 tab_create_cmd: "<输入要执行的命令(支持%player%)>"
 tab_create_item_amount: "<物品数量>"
 tab_list_page: "<页码>"
+
+usage_hand: "<red>用法: /gc hand <次数> <过期时间秒,-1为永久></red>"
+hand_empty: "<red>你手上没有拿着任何物品！</red>"

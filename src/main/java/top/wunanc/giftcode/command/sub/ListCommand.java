@@ -1,11 +1,13 @@
 package top.wunanc.giftcode.command.sub;
 
 import org.bukkit.command.CommandSender;
+import org.bukkit.inventory.ItemStack;
 import top.wunanc.giftcode.GiftCode;
 import top.wunanc.giftcode.command.SubCommand;
 import top.wunanc.giftcode.database.DatabaseManager;
 import top.wunanc.giftcode.manager.LanguageManager;
 import top.wunanc.giftcode.model.CodeData;
+import top.wunanc.giftcode.util.ItemSerializer;
 import top.wunanc.giftcode.util.SchedulerUtil;
 
 import java.sql.SQLException;
@@ -60,11 +62,22 @@ public class ListCommand implements SubCommand {
                     for (CodeData code : codes) {
                         String expireStr = code.getExpireTime() == -1 ? "∞" : sdf.format(new Date(code.getExpireTime()));
 
+                        // 【修改点】：如果类型是 base64，反序列化获取简短名称用于展示
+                        String displayContent = code.getContent();
+                        if (code.getType().equals("base64")) {
+                            ItemStack decoded = ItemSerializer.fromBase64(code.getContent());
+                            if (decoded != null) {
+                                displayContent = "[包含 NBT 的 " + decoded.getType().name() + " x" + decoded.getAmount() + "]";
+                            } else {
+                                displayContent = "[损坏的物品数据]";
+                            }
+                        }
+
                         // 输出格式化后的每一条数据记录
                         lang.send(sender, "list_format",
                                 "uuid", code.getUuid(),
                                 "type", code.getType(),
-                                "content", code.getContent(),
+                                "content", displayContent, // 这里传入我们处理好的 displayContent
                                 "left", String.valueOf(code.getRemaining()),
                                 "expire", expireStr);
                     }

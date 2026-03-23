@@ -10,6 +10,7 @@ import top.wunanc.giftcode.command.SubCommand;
 import top.wunanc.giftcode.database.DatabaseManager;
 import top.wunanc.giftcode.manager.LanguageManager;
 import top.wunanc.giftcode.model.CodeData;
+import top.wunanc.giftcode.util.ItemSerializer;
 import top.wunanc.giftcode.util.SchedulerUtil;
 
 import java.sql.SQLException;
@@ -81,6 +82,20 @@ public class ClaimCommand implements SubCommand {
                                 player.getWorld().dropItem(player.getLocation(), leftover);
                             }
                             lang.send(player, "claim_success_item");
+                        });
+                    } else if (data.getType().equals("base64")) {
+                        // 【新增的 Base64 复杂物品兑换逻辑】
+                        SchedulerUtil.runEntity(plugin, player, () -> {
+                            ItemStack item = ItemSerializer.fromBase64(data.getContent());
+                            if (item != null) {
+                                HashMap<Integer, ItemStack> leftovers = player.getInventory().addItem(item);
+                                for (ItemStack leftover : leftovers.values()) {
+                                    player.getWorld().dropItem(player.getLocation(), leftover);
+                                }
+                                lang.send(player, "claim_success_item");
+                            } else {
+                                player.sendMessage("§c严重错误：物品数据损坏，无法发放！");
+                            }
                         });
                     } else if (data.getType().equals("cmd")) {
                         // 执行全局命令，需要 Folia 的 GlobalRegionScheduler

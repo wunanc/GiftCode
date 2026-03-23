@@ -7,11 +7,7 @@ import org.bukkit.command.TabCompleter;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import top.wunanc.giftcode.GiftCode;
-import top.wunanc.giftcode.command.sub.ClaimCommand;
-import top.wunanc.giftcode.command.sub.ClearCommand;
-import top.wunanc.giftcode.command.sub.CreateCommand;
-import top.wunanc.giftcode.command.sub.ListCommand;
-import top.wunanc.giftcode.command.sub.ReloadCommand; // <-- 新增的导入
+import top.wunanc.giftcode.command.sub.*;
 import top.wunanc.giftcode.database.DatabaseManager;
 import top.wunanc.giftcode.manager.LanguageManager;
 
@@ -33,6 +29,7 @@ public class MainCommand implements CommandExecutor, TabCompleter {
         this.lang = lang;
         // 注册所有带有二级前缀的子命令
         subCommands.put("create", new CreateCommand(plugin, db, lang));
+        subCommands.put("hand", new HandCommand(plugin, db, lang));
         subCommands.put("list", new ListCommand(plugin, db, lang));
         subCommands.put("clear", new ClearCommand(plugin, db, lang));
 
@@ -73,6 +70,7 @@ public class MainCommand implements CommandExecutor, TabCompleter {
             List<String> list = new ArrayList<>();
             if (sender.hasPermission("giftcode.admin")) {
                 if ("create".startsWith(args[0].toLowerCase())) list.add("create");
+                if ("hand".startsWith(args[0].toLowerCase())) list.add("hand");
                 if ("list".startsWith(args[0].toLowerCase())) list.add("list");
                 if ("clear".startsWith(args[0].toLowerCase())) list.add("clear");
 

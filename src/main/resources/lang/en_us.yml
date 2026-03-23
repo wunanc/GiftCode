@@ -43,3 +43,6 @@ tab_create_expire: "<ExpireSeconds,-1=Permanent>"
 tab_create_cmd: "<Command_To_Run(Supports_%player%)>"
 tab_create_item_amount: "<Item_Amount>"
 tab_list_page: "<Page_Number>"
+
+usage_hand: "<red>Usage: /gc hand <uses> <expire_secs,-1_for_permanent></red>"
+hand_empty: "<red>You are not holding any item in your main hand!</red>"
