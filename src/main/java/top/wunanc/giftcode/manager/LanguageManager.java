@@ -56,7 +56,7 @@ public class LanguageManager {
      * @return 格式化好的文本组件
      */
     public Component get(String key, String... placeholders) {
-        String msg = langConfig.getString(key, "<red>Missing language key: " + key + "</red>");
+        String msg = langConfig.getString(key, "<red>Missing language key: " + key + ",try delete language file,regenerate</red>");
 
         // 替换动态变量（例如把 %uuid% 替换为实际的 uuid 字符串）
         for (int i = 0; i < placeholders.length; i += 2) {
