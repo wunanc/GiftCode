@@ -53,11 +53,11 @@ public class DatabaseManager {
         //noinspection SqlResolve,SqlNoDataSourceInspection
         String sql = "INSERT INTO gift_codes (uuid, type, content, remaining, expire_time) VALUES (?, ?, ?, ?, ?)";
         try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
-            pstmt.setString(1, data.getUuid());
-            pstmt.setString(2, data.getType());
-            pstmt.setString(3, data.getContent());
-            pstmt.setInt(4, data.getRemaining());
-            pstmt.setLong(5, data.getExpireTime());
+            pstmt.setString(1, data.uuid());
+            pstmt.setString(2, data.type());
+            pstmt.setString(3, data.content());
+            pstmt.setInt(4, data.remaining());
+            pstmt.setLong(5, data.expireTime());
             pstmt.executeUpdate();
         }
     }

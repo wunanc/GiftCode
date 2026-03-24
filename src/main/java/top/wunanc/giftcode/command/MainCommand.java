@@ -32,8 +32,9 @@ public class MainCommand implements CommandExecutor, TabCompleter {
         subCommands.put("hand", new HandCommand(plugin, db, lang));
         subCommands.put("list", new ListCommand(plugin, db, lang));
         subCommands.put("clear", new ClearCommand(plugin, db, lang));
-        subCommands.put("reload", new ReloadCommand(plugin, lang));
         subCommands.put("delete", new DeleteCommand(plugin, db, lang));
+        subCommands.put("reload", new ReloadCommand(plugin, lang));
+        subCommands.put("help", new HelpCommand(plugin, lang));
 
         this.claimCommand = new ClaimCommand(plugin, db, lang);
     }
@@ -41,7 +42,7 @@ public class MainCommand implements CommandExecutor, TabCompleter {
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
         if (args.length == 0) {
-            lang.send(sender, "usage_main");
+            subCommands.get("help").execute(sender, args);
             return true;
         }
 
@@ -66,6 +67,8 @@ public class MainCommand implements CommandExecutor, TabCompleter {
         // 第一层补全：提示子命令
         if (args.length == 1) {
             List<String> list = new ArrayList<>();
+            list.add(lang.getRaw("tab_code"));
+            if ("help".startsWith(args[0].toLowerCase())) list.add("help");
             if (sender.hasPermission("giftcode.admin")) {
                 if ("create".startsWith(args[0].toLowerCase())) list.add("create");
                 if ("hand".startsWith(args[0].toLowerCase())) list.add("hand");

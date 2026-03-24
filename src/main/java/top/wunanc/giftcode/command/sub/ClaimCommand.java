@@ -54,11 +54,11 @@ public class ClaimCommand implements SubCommand {
                     lang.send(player, "code_not_exist");
                     return;
                 }
-                if (data.getExpireTime() != -1 && data.getExpireTime() < System.currentTimeMillis()) {
+                if (data.expireTime() != -1 && data.expireTime() < System.currentTimeMillis()) {
                     lang.send(player, "code_expired");
                     return;
                 }
-                if (data.getRemaining() <= 0) {
+                if (data.remaining() <= 0) {
                     lang.send(player, "code_depleted");
                     return;
                 }
@@ -68,10 +68,10 @@ public class ClaimCommand implements SubCommand {
 
                 if (success) {
                     // 3. 抢码成功，开始发奖励。发奖励必须回到同步主线程。
-                    if (data.getType().equals("item")) {
+                    if (data.type().equals("item")) {
                         // 给予物品，需要 Folia 的 EntityScheduler
                         SchedulerUtil.runEntity(plugin, player, () -> {
-                            String[] parts = data.getContent().split(":");
+                            String[] parts = data.content().split(":");
                             Material mat = Material.getMaterial(parts[0]);
                             int amount = Integer.parseInt(parts[1]);
                             ItemStack item = new ItemStack(mat != null ? mat : Material.STONE, amount);
@@ -83,10 +83,10 @@ public class ClaimCommand implements SubCommand {
                             }
                             lang.send(player, "claim_success_item");
                         });
-                    } else if (data.getType().equals("base64")) {
+                    } else if (data.type().equals("base64")) {
                         // 【新增的 Base64 复杂物品兑换逻辑】
                         SchedulerUtil.runEntity(plugin, player, () -> {
-                            ItemStack item = ItemSerializer.fromBase64(data.getContent());
+                            ItemStack item = ItemSerializer.fromBase64(data.content());
                             if (item != null) {
                                 HashMap<Integer, ItemStack> leftovers = player.getInventory().addItem(item);
                                 for (ItemStack leftover : leftovers.values()) {
@@ -97,11 +97,11 @@ public class ClaimCommand implements SubCommand {
                                 player.sendMessage("§c严重错误：物品数据损坏，无法发放！");
                             }
                         });
-                    } else if (data.getType().equals("cmd")) {
+                    } else if (data.type().equals("cmd")) {
                         // 执行全局命令，需要 Folia 的 GlobalRegionScheduler
                         SchedulerUtil.runGlobal(plugin, () -> {
                             // 替换 %player% 占位符为玩家真名
-                            String cmdToRun = data.getContent().replace("%player%", player.getName());
+                            String cmdToRun = data.content().replace("%player%", player.getName());
                             Bukkit.dispatchCommand(Bukkit.getConsoleSender(), cmdToRun);
                             lang.send(player, "claim_success_cmd");
                         });

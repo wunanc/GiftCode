@@ -38,6 +38,7 @@ clear_success: "<green>Cleanup complete! <yellow>%count%</yellow> invalid codes 
 # Reload Command
 reload_success: "<green>Plugin config and language files have been reloaded successfully!</green>"
 
+tab_code: "<Code>"
 tab_create_uses: "<Amount/Uses>"
 tab_create_expire: "<ExpireSeconds,-1=Permanent>"
 tab_create_cmd: "<Command_To_Run(Supports_%player%)>"
@@ -52,3 +53,13 @@ deleting: "<yellow>Attempting to delete the specified code, please wait...</yell
 delete_success: "<green>Successfully deleted code: <yellow>%uuid%</yellow></green>"
 delete_not_found: "<red>Delete failed: The code was not found or has already been deleted!</red>"
 tab_delete_code: "<Code_UUID_To_Delete>"
+# Help Command
+help_header: "<dark_gray>============= </dark_gray><gold>GiftCode Help Menu</gold><dark_gray> =============</dark_gray>"
+help_claim: "<yellow>/gc <Code_UUID></yellow> <gray>- Redeem a gift code</gray>"
+help_create: "<yellow>/gc create <cmd|item> <uses> <expire> <content></yellow> <gray>- Create a new code</gray>"
+help_hand: "<yellow>/gc hand <uses> <expire></yellow> <gray>- Create a code from hand item</gray>"
+help_list: "<yellow>/gc list [page]</yellow> <gray>- List all gift codes</gray>"
+help_delete: "<yellow>/gc delete <UUID></yellow> <gray>- Delete a specific code</gray>"
+help_clear: "<yellow>/gc clear</yellow> <gray>- Clear expired/depleted codes</gray>"
+help_reload: "<yellow>/gc reload</yellow> <gray>- Reload config & language files</gray>"
+help_footer: "<dark_gray>=============================================</dark_gray>"

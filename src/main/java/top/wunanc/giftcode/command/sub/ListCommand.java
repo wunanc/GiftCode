@@ -60,12 +60,12 @@ public class ListCommand implements SubCommand {
                     lang.send(sender, "list_empty");
                 } else {
                     for (CodeData code : codes) {
-                        String expireStr = code.getExpireTime() == -1 ? "∞" : sdf.format(new Date(code.getExpireTime()));
+                        String expireStr = code.expireTime() == -1 ? "∞" : sdf.format(new Date(code.expireTime()));
 
                         // 【修改点】：如果类型是 base64，反序列化获取简短名称用于展示
-                        String displayContent = code.getContent();
-                        if (code.getType().equals("base64")) {
-                            ItemStack decoded = ItemSerializer.fromBase64(code.getContent());
+                        String displayContent = code.content();
+                        if (code.type().equals("base64")) {
+                            ItemStack decoded = ItemSerializer.fromBase64(code.content());
                             if (decoded != null) {
                                 displayContent = "[包含 NBT 的 " + decoded.getType().name() + " x" + decoded.getAmount() + "]";
                             } else {
@@ -75,10 +75,10 @@ public class ListCommand implements SubCommand {
 
                         // 输出格式化后的每一条数据记录
                         lang.send(sender, "list_format",
-                                "uuid", code.getUuid(),
-                                "type", code.getType(),
+                                "uuid", code.uuid(),
+                                "type", code.type(),
                                 "content", displayContent, // 这里传入我们处理好的 displayContent
-                                "left", String.valueOf(code.getRemaining()),
+                                "left", String.valueOf(code.remaining()),
                                 "expire", expireStr);
                     }
                 }
