@@ -32,11 +32,9 @@ public class MainCommand implements CommandExecutor, TabCompleter {
         subCommands.put("hand", new HandCommand(plugin, db, lang));
         subCommands.put("list", new ListCommand(plugin, db, lang));
         subCommands.put("clear", new ClearCommand(plugin, db, lang));
-
-        // <-- 在这里把 ReloadCommand 注册进去 -->
         subCommands.put("reload", new ReloadCommand(plugin, lang));
+        subCommands.put("delete", new DeleteCommand(plugin, db, lang));
 
-        // 兑换命令没有前缀
         this.claimCommand = new ClaimCommand(plugin, db, lang);
     }
 
@@ -71,10 +69,9 @@ public class MainCommand implements CommandExecutor, TabCompleter {
             if (sender.hasPermission("giftcode.admin")) {
                 if ("create".startsWith(args[0].toLowerCase())) list.add("create");
                 if ("hand".startsWith(args[0].toLowerCase())) list.add("hand");
+                if ("delete".startsWith(args[0].toLowerCase())) list.add("delete");
                 if ("list".startsWith(args[0].toLowerCase())) list.add("list");
                 if ("clear".startsWith(args[0].toLowerCase())) list.add("clear");
-
-                // <-- 在 Tab 补全中加入 reload 提示 -->
                 if ("reload".startsWith(args[0].toLowerCase())) list.add("reload");
             }
             return list;

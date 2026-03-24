@@ -9,5 +9,13 @@ folia-supported: true
 
 commands:
   gc:
+    aliases: [ giftcode ]
+    permission: giftcode.use
     description: 兑换码主命令
     usage: /gc <uuid>
+
+permissions:
+  giftcode.use:
+    default: true
+  giftcode.admin:
+    default: op

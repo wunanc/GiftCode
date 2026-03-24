@@ -140,4 +140,14 @@ public class DatabaseManager {
             return pstmt.executeUpdate(); // 返回被删除的行数
         }
     }
+
+    public synchronized boolean deleteCode(String uuid) throws SQLException {
+        //noinspection SqlResolve,SqlNoDataSourceInspection
+        String sql = "DELETE FROM gift_codes WHERE uuid = ?";
+        try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
+            pstmt.setString(1, uuid);
+            // 如果受影响的行数大于 0，说明删除成功；等于 0 说明找不到这个码
+            return pstmt.executeUpdate() > 0;
+        }
+    }
 }

@@ -4,7 +4,7 @@ prefix: "<gray>[</gray><gold>GiftCode</gold><gray>]</gray> "
 # Basic Messages
 no_permission: "<red>You do not have permission to execute this command!</red>"
 only_player: "<red>Only players can use gift codes!</red>"
-usage_main: "<red>Usage: /gc <code> or /gc <create|list|clear> ...</red>"
+usage_main: "<red>Usage: /gc <code> or /gc <create|hand|list|clear|delete|reload> ...</red>"
 db_error: "<red>Database error: %error%</red>"
 
 # Create Command
@@ -46,3 +46,9 @@ tab_list_page: "<Page_Number>"
 
 usage_hand: "<red>Usage: /gc hand <uses> <expire_secs,-1_for_permanent></red>"
 hand_empty: "<red>You are not holding any item in your main hand!</red>"
+
+usage_delete: "<red>Usage: /gc delete <Code_UUID></red>"
+deleting: "<yellow>Attempting to delete the specified code, please wait...</yellow>"
+delete_success: "<green>Successfully deleted code: <yellow>%uuid%</yellow></green>"
+delete_not_found: "<red>Delete failed: The code was not found or has already been deleted!</red>"
+tab_delete_code: "<Code_UUID_To_Delete>"

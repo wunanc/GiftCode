@@ -4,7 +4,7 @@ prefix: "<gray>[</gray><gold>GiftCode</gold><gray>]</gray> "
 # 基础提示
 no_permission: "<red>你没有权限执行此命令！</red>"
 only_player: "<red>只有玩家可以使用兑换码！</red>"
-usage_main: "<red>用法: /gc <兑换码> 或 /gc <create|list|clear> ...</red>"
+usage_main: "<red>用法:/gc <兑换码> 或 /gc <create|hand|list|clear|delete|reload> ...</red>"
 db_error: "<red>数据库发生错误: %error%</red>"
 
 # 创建命令提示
@@ -46,3 +46,9 @@ tab_list_page: "<页码>"
 
 usage_hand: "<red>用法: /gc hand <次数> <过期时间秒,-1为永久></red>"
 hand_empty: "<red>你手上没有拿着任何物品！</red>"
+
+usage_delete: "<red>用法: /gc delete <兑换码UUID></red>"
+deleting: "<yellow>正在尝试删除指定的兑换码，请稍候...</yellow>"
+delete_success: "<green>成功删除了兑换码: <yellow>%uuid%</yellow></green>"
+delete_not_found: "<red>删除失败：找不到该兑换码，或者它已被删除！</red>"
+tab_delete_code: "<要删除的兑换码UUID>"
