@@ -3,7 +3,7 @@ package top.wunanc.giftcode;
 import org.bukkit.plugin.java.JavaPlugin;
 import top.wunanc.giftcode.command.MainCommand;
 import top.wunanc.giftcode.database.DatabaseManager;
-import top.wunanc.giftcode.manager.LanguageManager;
+import top.wunanc.giftcode.managers.LanguageManager;
 
 import java.sql.SQLException;
 
@@ -26,6 +26,7 @@ public final class GiftCode extends JavaPlugin {
             getLogger().info("数据库初始化成功！");
         } catch (SQLException e) {
             getLogger().severe("数据库初始化失败！插件将无法正常工作。");
+
             e.printStackTrace();
         }
 

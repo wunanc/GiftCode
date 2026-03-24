@@ -4,7 +4,7 @@ import org.bukkit.command.CommandSender;
 import top.wunanc.giftcode.GiftCode;
 import top.wunanc.giftcode.command.SubCommand;
 import top.wunanc.giftcode.database.DatabaseManager;
-import top.wunanc.giftcode.manager.LanguageManager;
+import top.wunanc.giftcode.managers.LanguageManager;
 import top.wunanc.giftcode.util.SchedulerUtil;
 
 import java.sql.SQLException;

@@ -5,7 +5,7 @@ import org.bukkit.inventory.ItemStack;
 import top.wunanc.giftcode.GiftCode;
 import top.wunanc.giftcode.command.SubCommand;
 import top.wunanc.giftcode.database.DatabaseManager;
-import top.wunanc.giftcode.manager.LanguageManager;
+import top.wunanc.giftcode.managers.LanguageManager;
 import top.wunanc.giftcode.model.CodeData;
 import top.wunanc.giftcode.util.ItemSerializer;
 import top.wunanc.giftcode.util.SchedulerUtil;

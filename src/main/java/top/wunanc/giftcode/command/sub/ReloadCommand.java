@@ -3,7 +3,7 @@ package top.wunanc.giftcode.command.sub;
 import org.bukkit.command.CommandSender;
 import top.wunanc.giftcode.GiftCode;
 import top.wunanc.giftcode.command.SubCommand;
-import top.wunanc.giftcode.manager.LanguageManager;
+import top.wunanc.giftcode.managers.LanguageManager;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -9,7 +9,7 @@ import org.jetbrains.annotations.Nullable;
 import top.wunanc.giftcode.GiftCode;
 import top.wunanc.giftcode.command.sub.*;
 import top.wunanc.giftcode.database.DatabaseManager;
-import top.wunanc.giftcode.manager.LanguageManager;
+import top.wunanc.giftcode.managers.LanguageManager;
 
 import java.util.ArrayList;
 import java.util.HashMap;

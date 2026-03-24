@@ -1,4 +1,4 @@
-package top.wunanc.giftcode.manager;
+package top.wunanc.giftcode.managers;
 
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
