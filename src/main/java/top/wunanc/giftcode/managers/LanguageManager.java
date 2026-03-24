@@ -85,4 +85,6 @@ public class LanguageManager {
     public String getRaw(String key) {
         return langConfig.getString(key, "<" + key + ">");
     }
+
+    public String getPrefix() { return langConfig.getString("prefix", "<gray>[</gray><gold>GiftCode</gold><gray>]</gray> "); }
 }

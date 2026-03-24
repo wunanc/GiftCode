@@ -1,9 +1,11 @@
 package top.wunanc.giftcode;
 
+import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 import top.wunanc.giftcode.command.MainCommand;
 import top.wunanc.giftcode.database.DatabaseManager;
 import top.wunanc.giftcode.managers.LanguageManager;
+import top.wunanc.giftcode.util.XLogger;
 
 import java.sql.SQLException;
 
@@ -16,28 +18,35 @@ public final class GiftCode extends JavaPlugin {
         // 1. 初始化语言管理器
         languageManager = new LanguageManager(this);
         languageManager.init();
-        getLogger().info("语言文件加载成功！ / Language file loaded!");
-
-        // 2. 初始化数据库
-        getLogger().info("正在初始化数据库...");
+        new XLogger(this, languageManager.getPrefix());
+        XLogger.info("Language file loaded!");
+        // 2. 初始化数据
+        XLogger.info("Initializing the database...");
         databaseManager = new DatabaseManager(getDataFolder());
         try {
             databaseManager.init();
-            getLogger().info("数据库初始化成功！");
+            XLogger.info("Database initialization successful!");
         } catch (SQLException e) {
-            java.util.logging.Logger logger = getLogger();
-            getLogger().severe("数据库初始化失败！插件将无法正常工作。");
-            logger.throwing(getClass().getName(), "onEnable", e);
+            XLogger.error("Database initialization failed! Closing plugins...");
+            XLogger.error("Error：" + e.getMessage());
+            XLogger.error("SQLState: " + e.getSQLState());
+            XLogger.error("ErrCode：" + e.getErrorCode());
+            Bukkit.getPluginManager().disablePlugin(this);
         }
+
 
         // 3. 注册命令
-        MainCommand mainCommand = new MainCommand(this, databaseManager, languageManager);
-        if (getCommand("gc") != null) {
-            getCommand("gc").setExecutor(mainCommand);
-            getCommand("gc").setTabCompleter(mainCommand);
+        var cmd = getCommand("gc");
+        if (cmd != null) {
+            MainCommand mainCommand = new MainCommand(this, databaseManager, languageManager);
+            cmd.setExecutor(mainCommand);
+            cmd.setTabCompleter(mainCommand);
+        } else {
+            XLogger.error("Command 'gc' registration failed! Closing plugins...");
+            Bukkit.getPluginManager().disablePlugin(this);
         }
 
-        getLogger().info("GiftCode 插件已启用！(支持 Folia 与多语言)");
+        getLogger().info("GiftCode plugin is enabled!");
     }
 
     @Override
@@ -45,9 +54,9 @@ public final class GiftCode extends JavaPlugin {
         // 安全关闭数据库连接
         if (databaseManager != null) {
             databaseManager.close();
-            getLogger().info("数据库连接已关闭。");
+            XLogger.info("The database connection is closed.");
         }
-        getLogger().info("GiftCode 插件已卸载。");
+        XLogger.info("GiftCode plugin has been disabled.");
     }
 
     // 提供给外部获取语言管理器实例的快捷方法
