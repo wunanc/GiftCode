@@ -1,5 +1,6 @@
 package top.wunanc.giftcode;
 
+import org.bstats.bukkit.Metrics;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 import top.wunanc.giftcode.command.MainCommand;
@@ -43,6 +44,7 @@ public final class GiftCode extends JavaPlugin {
             Bukkit.getPluginManager().disablePlugin(this);
         }
 
+        Metrics metrics = new Metrics(this, 30358);
         XLogger.info("GiftCode plugin is enabled!");
     }
 
