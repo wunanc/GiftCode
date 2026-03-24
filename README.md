@@ -18,6 +18,8 @@
 
 ---
 
+[中文（简体）](https://github.com/wunanc/GiftCode/blob/master/README_CN.md) | English
+
 ## Introduction
 
 A modern, lightweight, and highly customizable gift code/redeem code plugin for Minecraft servers.
