@@ -25,9 +25,9 @@ public final class GiftCode extends JavaPlugin {
             databaseManager.init();
             getLogger().info("数据库初始化成功！");
         } catch (SQLException e) {
+            java.util.logging.Logger logger = getLogger();
             getLogger().severe("数据库初始化失败！插件将无法正常工作。");
-
-            e.printStackTrace();
+            logger.throwing(getClass().getName(), "onEnable", e);
         }
 
         // 3. 注册命令
