@@ -28,7 +28,6 @@ public class LanguageManager {
         plugin.saveDefaultConfig();
         String langName = plugin.getConfig().getString("language", "zh_cn");
 
-        // 释放默认的两套语言文件到插件文件夹
         saveDefaultLang("zh_cn.yml");
         saveDefaultLang("en_us.yml");
 
@@ -65,7 +64,6 @@ public class LanguageManager {
             }
         }
 
-        // 将字符串解析为 MiniMessage 对象
         return MiniMessage.miniMessage().deserialize(prefix + msg);
     }
 
