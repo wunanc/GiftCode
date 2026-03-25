@@ -8,8 +8,8 @@
 
 [![Latest Build](https://img.shields.io/github/v/release/wunanc/GiftCode?label=%E6%9C%80%E6%96%B0%E6%9E%84%E5%BB%BA%E4%B8%8B%E8%BD%BD&logo=github&color=0aa344)](https://github.com/wunanc/GiftCode/releases/latest)
 
-[![Modrinth](https://img.shields.io/badge/To-Modrinth-1bd96a)](https://modrinth.com/plugin/lunadeer-dominion)
-[![Spigot](https://img.shields.io/badge/To-Spigot-ed8106)](https://www.spigotmc.org/resources/dominion.119514/)
+[![Modrinth](https://img.shields.io/badge/To-Modrinth-1bd96a)](https://modrinth.com/project/ozJTYG4R)
+[![Spigot](https://img.shields.io/badge/To-Spigot-ed8106)](https://www.spigotmc.org/resources/giftcode.133723/)
 
 ![](https://img.shields.io/github/downloads/wunanc/GiftCode/total?logo=github&label=Github%E4%B8%8B%E8%BD%BD%E9%87%8F)
 [![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/wunanc/GiftCode)
@@ -61,3 +61,34 @@ git clone https://github.com/wunanc/GiftCode.git
 cd GiftCode
 mvn clean package
 ```
+
+### 📄 许可证
+
+本项目采用 MIT 许可证 - 详见 [LICENSE](LICENSE) 文件。
+
+### 👥 作者
+
+- **wunanc | Hotguo** - *主要开发者*
+
+### 🙏 鸣谢
+
+感谢所有为本项目做出贡献的开发者和用户！
+
+### 📞 支持与反馈
+
+- 🐛 [报告 Bug](https://github.com/wunanc/GiftCode/issues)
+- 💡 [功能建议](https://github.com/wunanc/GiftCode/issues)
+- 🐧 [QQ 群](https://qm.qq.com/q/OQ33f3SHeg)
+- 📧 联系作者：通过 GitHub Issues
+
+---
+
+<div align="center">
+
+**由 Hotguo 用 ❤️ 制作**
+
+⭐ 如果你喜欢这个项目，不妨给它点个 Star！
+
+[![bStats](https://bstats.org/signatures/bukkit/GiftCode.svg)](https://bstats.org/plugin/bukkit/GiftCode)
+
+</div>

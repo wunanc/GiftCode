@@ -8,8 +8,8 @@
 
 [![Latest Build](https://img.shields.io/github/v/release/wunanc/GiftCode?label=Latest%20Build%20Download&logo=github&color=0aa344)](https://github.com/wunanc/GiftCode/releases/latest)
 
-[![Modrinth](https://img.shields.io/badge/To-Modrinth-1bd96a)](https://modrinth.com/plugin/lunadeer-dominion)
-[![Spigot](https://img.shields.io/badge/To-Spigot-ed8106)](https://www.spigotmc.org/resources/dominion.119514/)
+[![Modrinth](https://img.shields.io/badge/To-Modrinth-1bd96a)](https://modrinth.com/project/ozJTYG4R)
+[![Spigot](https://img.shields.io/badge/To-Spigot-ed8106)](https://www.spigotmc.org/resources/giftcode.133723/)
 
 ![](https://img.shields.io/github/downloads/wunanc/GiftCode/total?logo=github&label=GitHub%20Downloads)
 [![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/wunanc/GiftCode)
@@ -60,3 +60,35 @@ To compile this project locally, you will need JDK 17+ and Maven:
 git clone https://github.com/wunanc/GiftCode.git
 cd GiftCode
 mvn clean package
+ ```
+
+### 📄 LICENSE
+
+This project is under the MIT license - see the [LICENSE](LICENSE) document for details.
+
+### 👥 AUTHOR
+
+- **wunanc | Hotguo** - *Main developer*
+
+### 🙏 THANKS
+
+Thank you to all the developers and users who contributed to this project!
+
+### 📞 Support and feedback
+
+- 🐛 [Report Bug](https://github.com/wunanc/GiftCode/issues)
+- 💡 [Feature suggestions](https://github.com/wunanc/GiftCode/issues)
+- 🐧 [QQ Group](https://qm.qq.com/q/OQ33f3SHeg)
+- 📧 Contact authors: via GitHub Issues
+
+---
+
+<div align="center">
+
+**Made with ❤️ by Hotguo**
+
+⭐ If you like this project, consider giving it a Star!
+
+[![bStats](https://bstats.org/signatures/bukkit/GiftCode.svg)](https://bstats.org/plugin/bukkit/GiftCode)
+
+</div>
