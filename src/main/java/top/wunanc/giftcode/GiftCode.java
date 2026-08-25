@@ -6,6 +6,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import top.wunanc.giftcode.command.MainCommand;
 import top.wunanc.giftcode.database.DatabaseManager;
 import top.wunanc.giftcode.managers.LanguageManager;
+import top.wunanc.giftcode.util.Update;
 import top.wunanc.giftcode.util.XLogger;
 
 import java.sql.SQLException;
@@ -46,6 +47,8 @@ public final class GiftCode extends JavaPlugin {
 
         Metrics metrics = new Metrics(this, 30358);
         XLogger.info("GiftCode plugin is enabled!");
+
+        Update.checkUpdate(this);
     }
 
     @Override
