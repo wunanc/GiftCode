@@ -4,7 +4,6 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
 
@@ -38,7 +37,7 @@ public final class Update {
      * @param plugin 当前插件实例
      */
     public static void checkUpdate(@NotNull JavaPlugin plugin) {
-        Bukkit.getScheduler().runTaskAsynchronously(plugin, () -> {
+        SchedulerUtil.runAsync(plugin, () -> {
             try {
                 String body = fetch(UPDATE_URL);
                 if (body == null || body.isBlank()) {
@@ -59,6 +58,7 @@ public final class Update {
                 String currentVersion = plugin.getPluginMeta().getVersion();
                 if (!isNewer(remoteVersion, currentVersion)) {
                     // 当前已是最新版本，无需提示
+                    XLogger.info("当前插件版本为最新版本");
                     return;
                 }
 
