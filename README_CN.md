@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🎁GiftCode
+# 🎁 GiftCode 🎁
 
 [![Documentation](https://img.shields.io/badge/在线文档-点击跳转-70f3ff?logo=readthedocs)](https://mc.wunanc.top/giftcode/)
 [![GitHub Repository](https://img.shields.io/badge/开源地址-GitHub-blue?logo=github)](https://github.com/wunanc/GiftCode)
@@ -44,15 +44,15 @@ GiftCode 允许服主生成专属礼包码，玩家输入后可获得物品、�
 
 ## 🚀 指令与权限
 
-| 指令                          | 说明          | 权限节点                  |
-|:----------------------------|:------------|:----------------------|
-| `/gc <兑换码>`                 | 玩家兑换礼包      | `giftcode.use` (默认拥有) |
-| `/gc create <item/cmd> ...` | 创建新的礼包码     | `giftcode.admin`      |
-| `/gc hand ...`              | 编辑指定礼包码     | `giftcode.admin`      |
-| `/gc delete <兑换码>`          | 删除指定礼包码     | `giftcode.admin`      |
-| `/gc clear`                 | 清理过期和无效的礼包码 | `giftcode.admin`      |
-| `/gc list`                  | 列出所有礼包码     | `giftcode.admin`      |
-| `/gc reload`                | 重载配置文件      | `giftcode.admin`      |
+| 指令                        | 说明                   | 权限节点                  |
+|:----------------------------|:-----------------------|:--------------------------|
+| `/gc <兑换码>`              | 玩家兑换礼包           | `giftcode.use` (默认拥有) |
+| `/gc create <item/cmd> ...` | 创建新的礼包码         | `giftcode.admin`          |
+| `/gc hand ...`              | 编辑指定礼包码         | `giftcode.admin`          |
+| `/gc delete <兑换码>`       | 删除指定礼包码         | `giftcode.admin`          |
+| `/gc clear`                 | 清理过期和无效的礼包码 | `giftcode.admin`          |
+| `/gc list`                  | 列出所有礼包码         | `giftcode.admin`          |
+| `/gc reload`                | 重载配置文件           | `giftcode.admin`          |
 
 ## 🛠️ 源码构建
 如果你想在本地编译此项目，你需要安装 JDK 17+ 以及相应的构建工具 Maven：

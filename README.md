@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🎁GiftCode
+# 🎁 GiftCode 🎁
 
 [![Documentation](https://img.shields.io/badge/Online%20Docs-Click%20to%20Visit-70f3ff?logo=readthedocs)](https://mc.wunanc.top/giftcode/)
 [![GitHub Repository](https://img.shields.io/badge/Open%20Source-GitHub-blue?logo=github)](https://github.com/wunanc/GiftCode)
