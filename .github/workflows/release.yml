@@ -48,6 +48,8 @@ jobs:
     permissions:
       contents: write
     steps:
+      - name: "Checkout code"
+        uses: actions/checkout@v7
       - name: "Download Artifacts"
         uses: actions/download-artifact@v8
         with:
