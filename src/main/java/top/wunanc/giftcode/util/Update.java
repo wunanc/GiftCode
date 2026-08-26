@@ -170,7 +170,7 @@ public final class Update {
                 .replace("%current%", current)
                 .replace("%remote%", remote));
         if (!summary.isBlank()) {
-            XLogger.info(summary);
+            XLogger.info("Msg:" + summary);
         }
         if (links.isEmpty()) {
             XLogger.info(lang.getRaw("update_download").replace("%url%", GITHUB_URL));
