@@ -59,6 +59,8 @@ jobs:
         run: |
           TAG="${{ needs.build.outputs.TAG }}"
           VERSION_NUMBER="${TAG#v}"
+          git config --global user.email "action@github.com"
+          git config --global user.name "GitHub Action"
           gh release create "$TAG" \
             staging/GiftCode-*.jar \
             --title "$VERSION_NUMBER" \
