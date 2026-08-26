@@ -54,13 +54,15 @@ jobs:
           name: release-artifacts
           path: staging
       - name: "GitHub Release"
-        uses: "marvinpinto/action-automatic-releases@latest"
-        with:
-          repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          automatic_release_tag: "${{ needs.build.outputs.TAG }}"
-          prerelease: false
-          files: |
-            staging/GiftCode-*.jar
+        run: |
+          TAG="${{ needs.build.outputs.TAG }}"
+          VERSION_NUMBER="${TAG#v}"
+          gh release create "$TAG" \
+            staging/GiftCode-*.jar \
+            --title "$VERSION_NUMBER" \
+            --generate-notes
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   release-modrinth:
     needs: build
