@@ -7,6 +7,9 @@ import org.bukkit.configuration.file.YamlConfiguration;
 import top.wunanc.giftcode.GiftCode;
 
 import java.io.File;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 
 /**
  * 多语言管理器 (Language Manager)
@@ -38,6 +41,10 @@ public class LanguageManager {
         }
 
         langConfig = YamlConfiguration.loadConfiguration(langFile);
+        // 若磁盘上的语言文件缺少插件内置的新增 key，则直接用内置版本覆盖，
+        // 保证 update_* 等新增提示能正常加载；只比对键是否存在，不比对值，
+        // 因此用户自定义翻译内容不会被覆盖。
+        ensureKeysComplete(langFile);
         prefix = langConfig.getString("prefix", "<gray>[</gray><gold>GiftCode</gold><gray>]</gray> ");
     }
 
@@ -46,6 +53,28 @@ public class LanguageManager {
         if (!file.exists()) {
             plugin.saveResource("lang/" + fileName, false);
         }
+    }
+
+    /**
+     * 检查磁盘语言文件是否包含了内置语言文件里的全部 key。
+     * 仅当存在缺失 key（如旧版本残留文件缺少新增提示）时，才用内置文件覆盖，
+     * 以补全缺失的键；用户已存在且自定义的翻译值保留不动。
+     */
+    private void ensureKeysComplete(File langFile) {
+        InputStream bundled = plugin.getResource("lang/" + langFile.getName());
+        if (bundled == null) {
+            return;
+        }
+        YamlConfiguration bundledConfig =
+                YamlConfiguration.loadConfiguration(new InputStreamReader(bundled, StandardCharsets.UTF_8));
+        boolean missing = bundledConfig.getKeys(false).stream().anyMatch(key -> !langConfig.contains(key, true));
+        if (!missing) {
+            return;
+        }
+        plugin.getLogger().warning("Language file " + langFile.getName()
+                + " is missing some keys. Overwriting with the built-in version to complete it.");
+        plugin.saveResource("lang/" + langFile.getName(), true);
+        langConfig = YamlConfiguration.loadConfiguration(langFile);
     }
 
     /**

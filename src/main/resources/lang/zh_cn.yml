@@ -63,3 +63,10 @@ help_delete: "<yellow>/gc delete <UUID></yellow> <gray>- 手动删除指定兑�
 help_clear: "<yellow>/gc clear</yellow> <gray>- 清理已失效或用完的兑换码</gray>"
 help_reload: "<yellow>/gc reload</yellow> <gray>- 重载配置与语言文件</gray>"
 help_footer: "<dark_gray>=============================================</dark_gray>"
+
+# 更新检查提示
+update_latest: "<green>当前插件版本为最新版本</green>"
+update_available: "<yellow>插件有更新！当前版本: %current% -> 最新版本: %remote%</yellow>"
+update_download: "<green>下载地址: </green><white>%url%</white>"
+update_platforms_header: "<green>可前往以下平台下载最新版本：</green>"
+update_platform: "<white>%name%: %url%</white>"
