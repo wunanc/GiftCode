@@ -24,6 +24,8 @@ public final class Update {
 
     // 远程更新信息地址
     private static final String UPDATE_URL = "https://api.wunanc.top/MCPlugins/meta/GiftCode/update.json";
+    //吉特哈布
+    private static final String GITHUB_URL = "https://github.com/wunanc/Giftcode";
     // HTTP 请求超时时间
     private static final Duration TIMEOUT = Duration.ofSeconds(10);
 
@@ -39,7 +41,7 @@ public final class Update {
     public static void checkUpdate(@NotNull JavaPlugin plugin) {
         SchedulerUtil.runAsync(plugin, () -> {
             try {
-                String body = fetch(UPDATE_URL);
+                String body = fetch();
                 if (body == null || body.isBlank()) {
                     return;
                 }
@@ -74,12 +76,12 @@ public final class Update {
     /**
      * 发起 GET 请求获取远程文本。
      */
-    private static String fetch(String url) throws Exception {
+    private static String fetch() throws Exception {
         HttpClient client = HttpClient.newBuilder()
                 .connectTimeout(TIMEOUT)
                 .build();
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create(url))
+                .uri(URI.create(Update.UPDATE_URL))
                 .timeout(TIMEOUT)
                 .header("User-Agent", "GiftCode-UpdateChecker")
                 .GET()
@@ -165,7 +167,7 @@ public final class Update {
             XLogger.info(summary);
         }
         if (links.isEmpty()) {
-            XLogger.info("下载地址: " + UPDATE_URL);
+            XLogger.info("下载地址: " + GITHUB_URL);
         } else {
             XLogger.info("可前往以下平台下载最新版本：");
             for (PlatformLink link : links) {
@@ -180,4 +182,6 @@ public final class Update {
      */
     private record PlatformLink(String name, String url) {
     }
+
+    public static String getUpdateURL() { return UPDATE_URL;}
 }
