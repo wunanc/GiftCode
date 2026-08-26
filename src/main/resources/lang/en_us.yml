@@ -63,3 +63,10 @@ help_delete: "<yellow>/gc delete <UUID></yellow> <gray>- Delete a specific code<
 help_clear: "<yellow>/gc clear</yellow> <gray>- Clear expired/depleted codes</gray>"
 help_reload: "<yellow>/gc reload</yellow> <gray>- Reload config & language files</gray>"
 help_footer: "<dark_gray>=============================================</dark_gray>"
+
+# Update Checker
+update_latest: "<green>You are running the latest plugin version</green>"
+update_available: "<yellow>Update available! Current version: %current% -> Latest version: %remote%</yellow>"
+update_download: "<green>Download at: </green><white>%url%</white>"
+update_platforms_header: "<green>You can download the latest version from the following platforms:</green>"
+update_platform: "<white>%name%: %url%</white>"

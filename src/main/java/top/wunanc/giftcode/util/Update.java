@@ -6,6 +6,8 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
+import top.wunanc.giftcode.GiftCode;
+import top.wunanc.giftcode.managers.LanguageManager;
 
 import java.net.URI;
 import java.net.http.HttpClient;
@@ -40,6 +42,7 @@ public final class Update {
      */
     public static void checkUpdate(@NotNull JavaPlugin plugin) {
         SchedulerUtil.runAsync(plugin, () -> {
+            LanguageManager lang = lang(plugin);
             try {
                 String body = fetch();
                 if (body == null || body.isBlank()) {
@@ -60,13 +63,13 @@ public final class Update {
                 String currentVersion = plugin.getPluginMeta().getVersion();
                 if (!isNewer(remoteVersion, currentVersion)) {
                     // 当前已是最新版本，无需提示
-                    XLogger.info("当前插件版本为最新版本");
+                    XLogger.info(lang.getRaw("update_latest"));
                     return;
                 }
 
                 String summary = latest.has("summary") ? latest.get("summary").getAsString() : "";
                 List<PlatformLink> links = parseLinks(latest);
-                notifyUpdate(currentVersion, remoteVersion, summary, links);
+                notifyUpdate(plugin, currentVersion, remoteVersion, summary, links);
             } catch (Exception ignored) {
                 // 网络异常或解析失败时静默跳过，不影响插件正常运行
             }
@@ -159,22 +162,34 @@ public final class Update {
     /**
      * 向控制台输出一次更新通知，并贴出各平台下载链接。
      */
-    private static void notifyUpdate(String current, String remote,
+    private static void notifyUpdate(JavaPlugin plugin, String current, String remote,
                                      String summary, List<PlatformLink> links) {
+        LanguageManager lang = lang(plugin);
         XLogger.info("========================================");
-        XLogger.warn("插件有更新！当前版本: " + current + " -> 最新版本: " + remote);
+        XLogger.warn(lang.getRaw("update_available")
+                .replace("%current%", current)
+                .replace("%remote%", remote));
         if (!summary.isBlank()) {
             XLogger.info(summary);
         }
         if (links.isEmpty()) {
-            XLogger.info("下载地址: " + GITHUB_URL);
+            XLogger.info(lang.getRaw("update_download").replace("%url%", GITHUB_URL));
         } else {
-            XLogger.info("可前往以下平台下载最新版本：");
+            XLogger.info(lang.getRaw("update_platforms_header"));
             for (PlatformLink link : links) {
-                XLogger.info(link.name() + ": " + link.url());
+                XLogger.info(lang.getRaw("update_platform")
+                        .replace("%name%", link.name())
+                        .replace("%url%", link.url()));
             }
         }
         XLogger.info("========================================");
+    }
+
+    /**
+     * 从插件实例获取语言管理器 (LanguageManager)。
+     */
+    private static LanguageManager lang(JavaPlugin plugin) {
+        return ((GiftCode) plugin).getLang();
     }
 
     /**
@@ -182,6 +197,4 @@ public final class Update {
      */
     private record PlatformLink(String name, String url) {
     }
-
-    public static String getUpdateURL() { return UPDATE_URL;}
 }
