@@ -3,16 +3,16 @@
 # 🎁 GiftCode 🎁
 
 [![Documentation](https://img.shields.io/badge/在线文档-点击跳转-70f3ff?logo=readthedocs)](https://mc.wunanc.top/giftcode/)
-[![GitHub Repository](https://img.shields.io/badge/开源地址-GitHub-blue?logo=github)](https://github.com/wunanc/GiftCode)
+[![GitHub Repository](https://img.shields.io/badge/开源地址-GitHub-blue?logo=github)](https://github.com/WunancStudio/GiftCode)
 [![bStats](https://img.shields.io/badge/bStats-Statistics-eacd76?logo=google-analytics)](https://bstats.org/plugin/bukkit/GiftCode/30358)
 
-[![Latest Build](https://img.shields.io/github/v/release/wunanc/GiftCode?label=%E6%9C%80%E6%96%B0%E6%9E%84%E5%BB%BA%E4%B8%8B%E8%BD%BD&logo=github&color=0aa344)](https://github.com/wunanc/GiftCode/releases/latest)
+[![Latest Build](https://img.shields.io/github/v/release/WunancStudio/GiftCode?label=%E6%9C%80%E6%96%B0%E6%9E%84%E5%BB%BA%E4%B8%8B%E8%BD%BD&logo=github&color=0aa344)](https://github.com/WunancStudio/GiftCode/releases/latest)
 
 [![Modrinth](https://img.shields.io/badge/To-Modrinth-1bd96a)](https://modrinth.com/project/ozJTYG4R)
 [![Spigot](https://img.shields.io/badge/To-Spigot-ed8106)](https://www.spigotmc.org/resources/giftcode.133723/)
 
-![](https://img.shields.io/github/downloads/wunanc/GiftCode/total?logo=github&label=Github%E4%B8%8B%E8%BD%BD%E9%87%8F)
-[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/wunanc/GiftCode)
+![](https://img.shields.io/github/downloads/WunancStudio/GiftCode/total?logo=github&label=Github%E4%B8%8B%E8%BD%BD%E9%87%8F)
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/WunancStudio/GiftCode)
 
 </div>
 
@@ -37,7 +37,7 @@ GiftCode 允许服主生成专属礼包码，玩家输入后可获得物品、�
 - **开发者 API:** 提供完善的 API，方便其他插件进行深度集成。
 
 ## 📥 安装指南
-1. 前往[Releases](https://github.com/wunanc/GiftCode/releases) 页面下载最新版本的 `GiftCode-x.x.x.jar`。
+1. 前往[Releases](https://github.com/WunancStudio/GiftCode/releases) 页面下载最新版本的 `GiftCode-x.x.x.jar`。
 2. 将下载的 `.jar` 文件放入服务器的 `plugins` 文件夹中。
 3. 重启服务器以生成默认配置文件。
 4. 按需修改 `config.yml`，然后使用 `/gc reload` 重载即可。
@@ -57,7 +57,7 @@ GiftCode 允许服主生成专属礼包码，玩家输入后可获得物品、�
 ## 🛠️ 源码构建
 如果你想在本地编译此项目，你需要安装 JDK 17+ 以及相应的构建工具 Maven：
 ```bash
-git clone https://github.com/wunanc/GiftCode.git
+git clone https://github.com/WunancStudio/GiftCode.git
 cd GiftCode
 mvn clean package
 ```
@@ -76,8 +76,8 @@ mvn clean package
 
 ### 📞 支持与反馈
 
-- 🐛 [报告 Bug](https://github.com/wunanc/GiftCode/issues)
-- 💡 [功能建议](https://github.com/wunanc/GiftCode/issues)
+- 🐛 [报告 Bug](https://github.com/WunancStudio/GiftCode/issues)
+- 💡 [功能建议](https://github.com/WunancStudio/GiftCode/issues)
 - 🐧 [QQ 群](https://qm.qq.com/q/OQ33f3SHeg)
 - 📧 联系作者：通过 GitHub Issues
 
