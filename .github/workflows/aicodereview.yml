@@ -33,6 +33,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           model: ${{ secrets.AI_MODEL }}
+          use_github_token: true
           prompt: |
             Review this pull request:
             - Check for code quality issues
