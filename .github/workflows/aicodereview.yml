@@ -35,7 +35,21 @@ jobs:
           model: ${{ secrets.AI_MODEL }}
           use_github_token: true
           prompt: |
-            Review this pull request:
-            - Check for code quality issues
-            - Look for potential bugs
-            - Suggest improvements
+            Review this pull request.
+
+            Please respond entirely in Simplified Chinese.
+            All explanations, findings, suggestions, and comments must be written in Simplified Chinese.
+
+            Please check:
+            - Code quality issues
+            - Potential bugs
+            - Security issues
+            - Performance issues
+            - Potential compatibility issues
+
+            For each issue:
+            - Clearly explain the problem
+            - Explain why it is a problem
+            - Give a concrete suggestion for improvement
+
+            If there are no significant issues, say so in Simplified Chinese.
