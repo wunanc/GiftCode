@@ -27,7 +27,7 @@ public final class Update {
     // 远程更新信息地址
     private static final String UPDATE_URL = "https://api.wunanc.top/MCPlugins/meta/GiftCode/update.json";
     //吉特哈布
-    private static final String GITHUB_URL = "https://github.com/wunanc/Giftcode";
+    private static final String GITHUB_URL = "https://github.com/WunancStudio/GiftCode";
     // HTTP 请求超时时间
     private static final Duration TIMEOUT = Duration.ofSeconds(10);
 

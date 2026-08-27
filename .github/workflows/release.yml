@@ -99,6 +99,6 @@ jobs:
           version_number: ${{ needs.build.outputs.TAG }}
           files: |
             staging/GiftCode-*.jar
-          changelog: "See https://github.com/wunanc/GiftCode/releases/tag/${{ needs.build.outputs.TAG }}"
+          changelog: "See https://github.com/WunancStudio/GiftCode/releases/tag/${{ needs.build.outputs.TAG }}"
           version_type: release
           featured: false
