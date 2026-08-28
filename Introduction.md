@@ -68,6 +68,6 @@ This project is licensed under the MIT License - see the [LICENSE](https://githu
 - 💡 [Suggest a Feature](https://github.com/WunancStudio/GiftCode/issues)
 - 🐧 [QQ Group](https://qm.qq.com/q/OQ33f3SHeg)
 
-## bStats Statistics
+## bStats Statics
 
 [![bStats](https://bstats.org/signatures/bukkit/GiftCode.svg)](https://bstats.org/plugin/bukkit/GiftCode)
