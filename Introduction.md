@@ -20,7 +20,7 @@ A modern, lightweight, and highly customizable gift code / redeem code plugin fo
 
 ---
 
-English | [中文（简体）](Introduction_CN.md)
+English | [中文（简体）](https://github.com/WunancStudio/GiftCode/blob/master/Introduction_CN.md)
 
 ## What is GiftCode?
 
@@ -61,9 +61,7 @@ This project is licensed under the MIT License - see the [LICENSE](https://githu
 
 ## 👥 Contributors
 
-<a href="https://github.com/WunancStudio/GiftCode/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=WunancStudio/GiftCode"  alt="Contributors"/>
-</a>
+[![Contributors](https://contrib.rocks/image?repo=WunancStudio/GiftCode)](https://github.com/WunancStudio/GiftCode/graphs/contributors)
 
 ## 📞 Support & Feedback
 - 🐛 [Report a Bug](https://github.com/WunancStudio/GiftCode/issues)
@@ -72,6 +70,4 @@ This project is licensed under the MIT License - see the [LICENSE](https://githu
 
 ## bStats Statistics
 
-<div align="center">
-<img src="https://bstats.org/signatures/bukkit/GiftCode.svg" alt="" width="100%">
-</div>
+[![bStats](https://bstats.org/signatures/bukkit/GiftCode.svg)](https://bstats.org/plugin/bukkit/GiftCode)
