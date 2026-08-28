@@ -20,7 +20,7 @@
 
 ---
 
-中文（简体） | [English](Introduction.md)
+中文（简体） | [English](https://github.com/WunancStudio/GiftCode/blob/master/Introduction.md)
 
 ## GiftCode 是什么？
 
@@ -61,9 +61,7 @@ GiftCode 允许服主生成专属礼包码，玩家输入后即可获得物品�
 
 ## 👥 贡献者
 
-<a href="https://github.com/WunancStudio/GiftCode/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=WunancStudio/GiftCode"  alt="贡献者列表"/>
-</a>
+[![贡献者](https://contrib.rocks/image?repo=WunancStudio/GiftCode)](https://github.com/WunancStudio/GiftCode/graphs/contributors)
 
 ## 📞 支持与反馈
 - 🐛 [报告 Bug](https://github.com/WunancStudio/GiftCode/issues)
@@ -72,6 +70,4 @@ GiftCode 允许服主生成专属礼包码，玩家输入后即可获得物品�
 
 ## bStats Statics
 
-<div align="center">
-<img src="https://bstats.org/signatures/bukkit/GiftCode.svg" alt="" width="100%">
-</div>
+[![bStats](https://bstats.org/signatures/bukkit/GiftCode.svg)](https://bstats.org/plugin/bukkit/GiftCode)
